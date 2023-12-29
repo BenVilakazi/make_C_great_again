@@ -20,7 +20,7 @@ struct Database {
 
 struct Connection {
     FILE *file
-    struct Database *db
+    struct Database *db;
 }
 
 void die(const char *message)
@@ -74,7 +74,7 @@ struct Connection *Database_open(const char *filename, char mode)
     {
         die("Failed to open the file");
     }
-    return 0;
+    return conn;
 
 }
 
@@ -148,7 +148,7 @@ void Database_get(struct Connection *conn, int id)
     }
 }
 
-void Database_delete(struct Connection *conn)
+void Database_delete(struct Connection *conn, int id)
 {
     struct Address addr = {.id = id, .set = 0};
     conn->db->rows[id] = addr;
@@ -171,7 +171,7 @@ void Database_list(struct Connection *conn)
 
 int main(int argc, char *argv[])
 {
-    if (argc < 3)
+    if (argc != 3)
         die("USAGE: ex17 <dbfile> <action> ]action params]")
 
     char *filename = argv[1];
