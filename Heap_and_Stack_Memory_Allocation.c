@@ -23,6 +23,19 @@ struct Connection {
     struct Database *db
 }
 
+void die(const char *message)
+{
+    if (errno)
+    {
+        perror(message);
+    }
+    else 
+    {
+        printf("ERROR: %s\n", message);
+    }
+    exit(1);
+}
+
 void Address_print(struct Address *addr)
 {
     printf("%d %s %s\n", addr->id, addr->name, addr->email);
@@ -31,5 +44,26 @@ void Address_print(struct Address *addr)
 void Database_load(struct Connection *conn)
 {
     int rc = fread(conn->db, sizeof(struct Database), 1, conn->file);
+    if (rc != 1)
+        die("Failed to load database.")
 }
 
+struct Connection *Database_open(const char *filename, char mode)
+{
+    struct Connection *conn = malloc(sizeof(struct Connection));
+    if (!conn)
+        die("Memory error");
+
+    conn->db = malloc(sizeof(struct Database));
+    if (!conn->db)
+        die("Memory error");
+
+    if (mode == 'c')
+    {
+        conn->file = fopen(filename, "w")
+    }
+    else 
+    {
+        
+    }
+}
