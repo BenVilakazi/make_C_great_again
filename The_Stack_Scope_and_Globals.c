@@ -19,7 +19,7 @@ void scope_demo(int count)
 
 	count = 3000;
 
-	log_info("count after assign: %d". count);
+	log_info("count after assign: %d", count);
 }
 
 int main(int argc, char *argv[])
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
 	log_info("Ratio at first: %f", update_ratio(2.0));
 	log_info("Ratio again: %f", update_ratio(10.0));
-	log_info("Ratio once more: %f" update_ratio(300.0));
+	log_info("Ratio once more: %f", update_ratio(300.0));
 
 	int count = 4;
 	scope_demo(count);
