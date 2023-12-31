@@ -6,7 +6,7 @@ const char *MY_NAME = "Ben Vilakazi";
 
 void scope_demo(int count)
 {
-	log_info("count is %d, count);
+	log_info("count is %d", count);
 
 	if (count > 10)
 	{
