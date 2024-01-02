@@ -8,7 +8,8 @@
 
 #define mu_suite_start() char *message = NULL
 
-#define mu_assert(test, message) if (!(test))
+#define mu_assert(test, message) 
+if (!(test))
 {
     log_err(message);
     return message;
@@ -33,5 +34,10 @@
     } else {
         printf("ALL TEST PASSED\n");
     }
-    
+    printf("TEsts run: %d\n", test_run);
+    exit(result != 0);
 }
+
+int tests_run;
+
+#endif
