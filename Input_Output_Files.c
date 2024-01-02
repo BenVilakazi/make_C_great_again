@@ -20,7 +20,7 @@ typedef struct Person {
     float income;
 } Person;
 
-int main(int argc, char *argv[])
+int main(void)
 {
     Person you = {.age = 0};
     int i = 0;
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     check(in != NULL, "Failed to read first_name");
 
     printf("How old are you? ");
-    int rc = fscan(stdin, "%d", &you.age);
+    int rc = fscanf(stdin, "%d", &you.age);
     check(rc > 0, "You have to enter a number. ");
 
     printf("What's colour are your eyes:\n ");
@@ -47,5 +47,22 @@ int main(int argc, char *argv[])
 
     int eyes = -1;
     rc = fscanf(stdin, "%d", &eyes);
+    check(rc > 0, "You have to enter a number. ")
+
+    you.eyes = eyes - 1;
+    check(you.eyes <= OTHER_EYES
+            && you.eyes >= 0, "Do it right, that's not an option. ");
+
+    printf("How much do you make an hour? ");
+    rc = fscanf(stdin, "%f", &you.income);
+    check(rc > 0, "Enter a floating point number.")
+
+    printf("------RESULTS------\n");
+
+    printf("First Name: %s", you.first_name);
+    printf("Last Name: %s", you.last_name);
+    printf("Age %d\n", you.age);
+    printf("Eyes: %s\n", EYE_COLOR_NAMES[you.eyes]);
+    printf("Income: %f", you.income);
 
 }
