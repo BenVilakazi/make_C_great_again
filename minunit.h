@@ -29,6 +29,9 @@
 
     if (result != 0)
     {
-        
+       printf("FAILED: %s\n", result); 
+    } else {
+        printf("ALL TEST PASSED\n");
     }
+    
 }
