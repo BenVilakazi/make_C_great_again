@@ -44,5 +44,15 @@ int main(int argc, char *argv[])
 
     int rc = safercopy(from_len, from, to_len, to);
     check(rc > 0, "Failed to safercopy.");
-    check(to[to_len - 1] == '\0')
+    check(to[to_len - 1] == '\0', "String not terminated.");
+
+    debug("Result is: '%s':%d", to, to_len);
+
+    rc = safercopy(from_len * -1, from, to_len, to);
+    check(rc == -1, "safercopy should fail #2");
+    check(to[to_len - 1] == '\0', "String not terminated.");
+
+    return 0;
+error:
+    return -1;
 }
