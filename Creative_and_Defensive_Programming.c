@@ -27,5 +27,22 @@ int safercopy(int from_len, char *from, int to_len, char *to)
         to[i] = from[i];
     }
 
-    to[to_len - 1]
+    to[to_len - 1] = '\0';
+
+    return i;
+}
+
+int main(int argc, char *argv[])
+{
+    char from[] = "0123456789";
+    int from_len = sizeof(from);
+
+    char to[] = "0123456";
+    int to_len = sizeof(to);
+
+    debug("Copying '%s' :%d to '%s':%d", from, from_len, to, to_len);
+
+    int rc = safercopy(from_len, from, to_len, to);
+    check(rc > 0, "Failed to safercopy.");
+    check(to[to_len - 1] == '\0')
 }
