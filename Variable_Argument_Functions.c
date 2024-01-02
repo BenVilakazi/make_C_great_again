@@ -10,7 +10,7 @@ int read_string(char **out_string, int max_buffer)
     *out_string = calloc(1, max_buffer + 1);
     check_mem(*out_string);
 
-    char *result = fgetsf(*out_string, max_buffer. stdin);
+    char *result = fgets(*out_string, max_buffer, stdin);
     check(result != NULL, "Input error");
 
     return 0;
@@ -50,7 +50,7 @@ int read_scan(const char *fmt, ...)
     {
         if (fmt[i] == '%')
         {
-            i++
+            i++;
             switch (fmt[i])
             {
                 case '\0':
@@ -64,9 +64,9 @@ int read_scan(const char *fmt, ...)
                     break;
 
                 case 'c':
-                    out_char = va_arg(argp, char *)
+                    out_char = va_arg(argp, char *);
                     *out_char = fgetc(stdin);
-                    break:
+                    break;
 
                 case 's':
                     max_buffer = va_arg(argp, int);
@@ -82,7 +82,7 @@ int read_scan(const char *fmt, ...)
             fgetc(stdin);
         }
 
-        check(!feof(stdin) && !ferror(stdin), "Input error."):
+        check(!feof(stdin) && !ferror(stdin), "Input error.");
     }
 
     va_end(argp);
@@ -107,14 +107,14 @@ int main(int argc, char *argv[])
     rc = read_scan("%c\n", &initial);
     check(rc == 0, "Failed initial");
 
-    printf("What's your last name?");
+    printf("What's your last name?\n ");
     rc = read_scan("%s", MAX_DATA, &last_name);
     check(rc == 0, "Failed last name");
 
-    printf("How old are you");
+    printf("How old are you? ");
     rc = read_scan("%d", &age);
 
-    printf("------RESULTS------");
+    printf("------RESULTS------\n");
     printf("First Name: %s", first_name);
     printf("Initial: '%c'\n", initial);
     printf("Last Name: %s", last_name);
