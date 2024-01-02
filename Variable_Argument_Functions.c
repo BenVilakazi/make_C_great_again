@@ -93,3 +93,11 @@ error:
     return -1;
 }
 
+int main(int argc, char *argv[])
+{
+    char *first_name, *last_name = NULL;
+    char initial = ' ';
+    int age = 0;
+
+    
+}
