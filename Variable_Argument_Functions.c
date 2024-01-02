@@ -84,4 +84,12 @@ int read_scan(const char *fmt, ...)
 
         check(!feof(stdin) && !ferror(stdin), "Input error."):
     }
+
+    va_end(argp);
+    return 0;
+
+error:
+    va_end(argp);
+    return -1;
 }
+
