@@ -229,3 +229,18 @@ char *test_unshift()
     mu_assert(List_count(list) == 3, "Wrong count on unshift");
 }
 
+char *test_shift()
+{
+    mu_assert(List_count(list) != 0, "Wrong count before shift");
+
+    char *val = List_shift(list);
+    mu_assert(val == test3, "Wrong value on shift");
+
+
+    val = List_shift(list);
+    mu_assert(val == test1, "Wrong value on shift");
+    mu_assert(List_count(list) == 0, "Wrong count after shift.");
+
+    return NULL;
+}
+
