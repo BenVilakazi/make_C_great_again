@@ -180,3 +180,24 @@ char *test_destroy()
     return NULL;
 }
 
+char *test_push_pop()
+{
+    List_push(list, test1);
+    mu_assert(List_last(list) == test1, "Wrong last value");
+
+    List_push(list, test2);
+    mu_assert(List_last(list) == test2, "Wrong last value");
+
+    List_push(list, test3);
+    mu_assert(List_last(list) == test3, "Wrong last value");
+    mu_assert(List_count(list) == test3, "Wrong count on push");
+
+    char *val = List_pop(list);
+    mu_assert(val == test3, "Wrong value on pop");
+
+    char *val = List_pop(list);
+    mu_assert(val == test2, "Wrong value on pop");
+
+    char *val = List_pop(list);
+    mu_assert(val == test3, "Wrong value on pop");
+}
