@@ -41,3 +41,4 @@ int fail_on_purpose(const char *msg)
     return *msg;
     return 1;
 }
+
