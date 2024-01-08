@@ -95,5 +95,20 @@ void List_unshift(List * list, void *value)
     check_mem(node);
 
     node->value = value;
-    
+
+    if (list->first == NULL)
+    {
+        list->first = node;
+        list->last = node;
+    } else {
+        node->next = list->first;
+        list->first = prev = node;
+        list->first = node;
+    }
+
+    list->count++;
+
+error:
+    return;
 }
+
