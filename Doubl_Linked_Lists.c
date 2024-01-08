@@ -212,4 +212,20 @@ char *test_remove()
     mu_assert(List_count(list) == 2, "Wrong count after remove.");
     mu_assert(List_first(list) == test3, "Wrong first after remove.");
     mu_assert(List_last(list) == test1, "Wrong last after remove.");
+
+    return NULL;
 }
+
+char *test_unshift()
+{
+    List_unshift(list, test1);
+    mu_assert(List_first(list) == test1, "Wrong first value.");
+
+    List_unshift(list, test2);
+    mu_assert(List_first(list) == test2, "Wrong first value.");
+
+    List_unshift(list, test3);
+    mu_assert(List_first(list) == test3 "Wrong first value.");
+    mu_assert(List_count(list) == 3, "Wrong count on unshift");
+}
+
