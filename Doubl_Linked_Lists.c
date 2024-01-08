@@ -112,3 +112,26 @@ error:
     return;
 }
 
+void *List_shift(List * list)
+{
+    ListNode *node = list->first;
+    return node != NULL ? List_remove(list, node) : NULL;
+}
+
+void *List_remove(List * list, ListNode * node)
+{
+    void *result = NULL;
+
+    check(list->first && node == list->last)
+    check(node, "node vcan't be NULL")
+
+    if (node == list->first && node == list->last)
+    {
+        list->first = NULL;
+        list->last = NULL;
+    } else if (node == list->first) {
+        list->first = node->next;
+        check(list->last != NULL,
+                "Invalid list, somehow got a first thst is NULL";
+    } 
+}
