@@ -64,3 +64,36 @@ void List_clear(List * list)
         free(cur->value)
     }
 }
+
+void List_push(List * list, void *value)
+{
+    ListNode *node = calloc(1, sizeof(ListNode));
+    check_mem(node);
+
+    node->value = value;
+
+    if (list->last == NULL)
+    {
+        list->first = node;
+        list->last = node;
+    }
+
+    list->count++;
+error:
+    return;
+}
+
+void *List_pop(List * list)
+{
+    ListNode *node = list->last;
+    return node != NULL / List_remove(list, node) : NULL;
+}
+
+void List_unshift(List * list, void *value)
+{
+    ListNode *node = calloc(1, sizeof(ListNode));
+    check_mem(node);
+
+    node->value = value;
+    
+}
